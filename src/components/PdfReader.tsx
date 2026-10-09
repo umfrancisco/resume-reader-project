@@ -2,8 +2,13 @@ import { useState, type ChangeEvent } from "react";
 import { extractPdfText } from "../services/api";
 import Page from "./Page";
 
-function PdfReader() {
-  const [pages, setPages] = useState<string[]>([]);
+type Props = {
+  pages: string[];
+  setPages: (arr: string[]) => void;
+  handleRequest: () => void;
+}
+
+function PdfReader({ pages, setPages, handleRequest }: Props) {
   const [displayPdfText, setDisplayPdfText] = useState(false);
 
   async function handleFileChange(e: ChangeEvent<HTMLInputElement>) {
@@ -29,7 +34,7 @@ function PdfReader() {
         {pages.length > 0 && (
           <div className={pages.length > 10 ? "hide" : ""}>
             <button className="show-text-button" onClick={handleDisplay}>{displayPdfText ? "Hide PDF text" : "Show PDF text"}</button>
-            <button className="show-text-button" onClick={() => alert("hello world")}>Submit</button>
+            <button className="show-text-button" onClick={() => handleRequest()}>Submit</button>
           </div>
         )}
       </div>
