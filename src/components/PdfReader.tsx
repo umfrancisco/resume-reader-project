@@ -19,7 +19,7 @@ function PdfReader() {
     <div>
       <input type="file" accept="application/pdf" onChange={handleFileChange} />
       {pages.map((text, index) => (
-        <article key={index}>
+        <article key={index} className="page">
           <h4>Page {index + 1}</h4>
           <p>{text}</p>
         </article>
