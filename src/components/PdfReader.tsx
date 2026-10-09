@@ -1,5 +1,6 @@
 import { useState, type ChangeEvent } from "react";
 import { extractPdfText } from "../services/api";
+import Page from "./Page";
 
 function PdfReader() {
   const [pages, setPages] = useState<string[]>([]);
@@ -25,18 +26,14 @@ function PdfReader() {
       <div className="control-bar">
         <input className="file-input" type="file" accept="application/pdf" onChange={handleFileChange} />
         {pages.length > 0 && (
-          <button className="show-text-button" onClick={handleDisplay}>{displayPdfText ? "Hide PDF text" : "Show PDF text"}</button>
+          <div className={pages.length > 10 ? "hide" : ""}>
+            <button className="show-text-button" onClick={handleDisplay}>{displayPdfText ? "Hide PDF text" : "Show PDF text"}</button>
+            <button className="show-text-button" onClick={() => alert("hello world")}>Submit</button>
+          </div>
         )}
       </div>
       {displayPdfText && (
-        <div>
-          {pages.map((text, index) => (
-            <article key={index} className="page">
-              <h4>Page {index + 1}</h4>
-              <p>{text}</p>
-            </article>
-          ))}
-        </div>
+        <Page pages={pages} />
       )}
     </div>
   )
