@@ -1,6 +1,5 @@
 import * as pdfjsLib from "pdfjs-dist";
 import pdfWorker from "pdfjs-dist/build/pdf.worker.min.mjs?url";
-import { useState, type ChangeEvent } from "react";
 
 pdfjsLib.GlobalWorkerOptions.workerSrc = pdfWorker;
 
