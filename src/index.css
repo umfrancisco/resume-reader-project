@@ -1,5 +1,6 @@
 :root {
   --background-color: #1f1e31;
+  --secondary-bg-color: #6a7a9c;
   --text-color: #eee;
 }
 
@@ -20,4 +21,27 @@ body {
 
 .page {
   margin: 8px 0;
+}
+
+.file-input::file-selector-button, .show-text-button {
+  background-color: var(--secondary-bg-color);
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-right: 12px;
+}
+
+.file-input::file-selector-button:hover, .show-text-button:hover {
+  background-color: var(--secondary-bg-color);
+}
+
+.control-bar {
+  display: flex;
+  padding: 16px 0;
+}
+
+.control-bar > input {
+  margin-right: 16px;
 }
