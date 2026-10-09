@@ -15,6 +15,7 @@ function PdfReader() {
 
     const extractedPages = await extractPdfText(file);
     setPages(extractedPages);
+    handleDisplay();
   }
 
   function handleDisplay() {
