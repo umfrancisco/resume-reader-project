@@ -12,3 +12,8 @@ body {
   background-color: var(--background-color);
   color: var(--text-color);
 }
+
+.container {
+  margin: 0 auto;
+  max-width: 1024px;
+}
