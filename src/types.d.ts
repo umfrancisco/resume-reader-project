@@ -2,6 +2,8 @@ declare type ResponseGemini = {
   nome_usuario: string;
   profissao: string;
   sugestoes: string[];
+  nome_empresa: string;
+  titulo_vaga: string;
   compatibilidade_vaga: number;
 }
 

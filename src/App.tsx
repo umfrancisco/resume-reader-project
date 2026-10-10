@@ -10,14 +10,15 @@ function App() {
 
   return (
     <div className="container">
-      {isWaiting ? (
-        <div>Loading...</div>
-      ) : (
-        <>
-          <PdfReader pages={pages} setPages={setPages} setIsWaiting={setIsWaiting} setResponse={setResponse} handleRequest={sendRequestToGeminiApi} />
-          {response && <Results response={response} />}
-        </>
-      )}
+      <main className="main-content">
+        {isWaiting && <div>Carregando...</div>}
+        {!isWaiting && (
+          <>
+            <PdfReader pages={pages} setPages={setPages} setIsWaiting={setIsWaiting} setResponse={setResponse} handleRequest={sendRequestToGeminiApi} />
+            {response && <Results response={response} />}
+          </>
+        )}
+      </main>
     </div>
   )
 }

@@ -94,6 +94,8 @@ export async function sendRequestToGeminiApi({ e, pages, jobDescription, setPage
   {
     "nome_usuario": "string",
     "profissao": "string",
+    "nome_empresa": "string",
+    "titulo_vaga": "string",
     "compatibilidade_vaga": 0,
     "sugestoes": [
       "string"

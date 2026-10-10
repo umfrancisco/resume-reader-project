@@ -12,7 +12,7 @@ function Page({ pages }: Props) {
   if (pages.length > 10) {
     return (
       <div>
-        <span>The PDF file is too large. Please try uploading a smaller file.</span>
+        <span>O tamanho do arquivo não é suportado. Por favor, envie um arquivo menor.</span>
       </div>
     )
   }
@@ -20,11 +20,11 @@ function Page({ pages }: Props) {
   return (
     <div className="page-container">
       <div className="buttons">
-        <button className={min} onClick={() => setPage(n => n - 1)}>Previous</button>
-        <button className={max} onClick={() => setPage(n => n + 1)}>Next</button>
+        <button className={min} onClick={() => setPage(n => n - 1)}>Anterior</button>
+        <button className={max} onClick={() => setPage(n => n + 1)}>Próximo</button>
       </div>
       <div className="page-content">
-        <h4>Page {page + 1}</h4>
+        <h4>Página {page + 1}</h4>
         <p>{pages[page]}</p>
       </div>
     </div>

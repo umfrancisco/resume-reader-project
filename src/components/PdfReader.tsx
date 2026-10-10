@@ -37,10 +37,9 @@ function PdfReader({ pages, setPages, setIsWaiting, setResponse, handleRequest }
         <input className="file-input" type="file" accept="application/pdf" onChange={handleFileChange} />
         {pages.length > 0 && (
           <form className={pages.length > 10 ? "hide" : ""} onSubmit={(e) => handleRequest({ e, pages, jobDescription, setPages, setIsWaiting, setResponse })}>
-            <label>Job Description: </label>
-            <input type="text" value={jobDescription} onChange={e => setJobDescription(e.target.value)} />
-            <button className="show-text-button" onClick={handleDisplay}>{displayPdfText ? "Hide PDF text" : "Show PDF text"}</button>
-            <button className="show-text-button" type="submit">Submit</button>
+            <input className="text-input" type="text" required placeholder="Descrição da vaga" value={jobDescription} onChange={e => setJobDescription(e.target.value)} />
+            <button className="show-text-button margin-button" type="button" onClick={handleDisplay}>{displayPdfText ? "Esconder PDF" : "Mostrar PDF"}</button>
+            <button className="show-text-button" type="submit">Enviar</button>
           </form>
         )}
       </div>

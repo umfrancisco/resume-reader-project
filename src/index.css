@@ -1,6 +1,7 @@
 :root {
   --background-color: #1f1e31;
-  --secondary-bg-color: #6a7a9c;
+  --secondary-color: #6a7a9c;
+  --tertiary-color: #c9ae74;
   --text-color: #eee;
 }
 
@@ -20,22 +21,29 @@ body {
   max-width: 1024px;
 }
 
-.page-container {
-  margin: 8px 0;
+.main-content {
+  margin: 16px;
 }
 
-.page-content > h4 {
-  margin-bottom: 16px;
+.text-input {
+  border: none;
+  border-radius: 8px;
+  padding: 6px 10px;
+  width: 120px;
+}
+
+.margin-button {
+  margin-left: 8px;
+  margin-right: 8px;
 }
 
 .file-input::file-selector-button, .show-text-button {
-  background-color: var(--secondary-bg-color);
+  background-color: var(--secondary-color);
   color: white;
   border: none;
-  padding: 10px 16px;
+  padding: 6px 10px;
   border-radius: 6px;
   cursor: pointer;
-  margin-right: 12px;
 }
 
 .file-input::file-selector-button:hover, .show-text-button:hover {
@@ -48,10 +56,6 @@ body {
   padding: 16px 0;
 }
 
-.control-bar > input {
-  margin-right: 16px;
-}
-
 .buttons {
   display: flex;
   margin-bottom: 16px;
@@ -60,6 +64,17 @@ body {
 
 .hide {
   display: none;
+}
+
+.ai-content {
+  background-color: var(--tertiary-color);
+  color: #222;
+  border-radius: 8px;
+  padding: 16px;
+}
+
+.ai-content > h4, p {
+  margin-bottom: 8px;
 }
 
 @media (max-width: 768px) {
@@ -71,12 +86,16 @@ body {
     margin-bottom: 16px;
   }
 
-  .container {
-    margin: 8px;
+  .main-content p {
+    font-size: 14px;
   }
 }
 
-@media (max-width: 1024px) {
+@media (min-width: 768) and (max-width: 1024px) {
+  .control-bar {
+    display: block;
+  }
+
   .container {
     margin: 8px;
   }
