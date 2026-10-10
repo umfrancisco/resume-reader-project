@@ -5,10 +5,12 @@ import Page from "./Page";
 type Props = {
   pages: string[];
   setPages: (arr: string[]) => void;
-  handleRequest: () => void;
+  setIsWaiting: (val: boolean) => void;
+  setResponse: (val: ResponseGemini) => void;
+  handleRequest: HandleRequest;
 }
 
-function PdfReader({ pages, setPages, handleRequest }: Props) {
+function PdfReader({ pages, setPages, setIsWaiting, setResponse, handleRequest }: Props) {
   const [displayPdfText, setDisplayPdfText] = useState(false);
 
   async function handleFileChange(e: ChangeEvent<HTMLInputElement>) {
@@ -34,7 +36,7 @@ function PdfReader({ pages, setPages, handleRequest }: Props) {
         {pages.length > 0 && (
           <div className={pages.length > 10 ? "hide" : ""}>
             <button className="show-text-button" onClick={handleDisplay}>{displayPdfText ? "Hide PDF text" : "Show PDF text"}</button>
-            <button className="show-text-button" onClick={() => handleRequest()}>Submit</button>
+            <button className="show-text-button" onClick={() => handleRequest(pages, setPages, setIsWaiting, setResponse)}>Submit</button>
           </div>
         )}
       </div>
