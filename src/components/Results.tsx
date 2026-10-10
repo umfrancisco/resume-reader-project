@@ -1,6 +1,6 @@
 
 type Props = {
-  response: ResponseGemini;
+  response: AiResponse;
 }
 
 function Results({ response }: Props) {

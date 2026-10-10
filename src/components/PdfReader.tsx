@@ -6,7 +6,7 @@ type Props = {
   pages: string[];
   setPages: Dispatch<React.SetStateAction<string[]>>;
   setIsWaiting: Dispatch<React.SetStateAction<boolean>>;
-  setResponse: Dispatch<React.SetStateAction<ResponseGemini | undefined>>;
+  setResponse: Dispatch<React.SetStateAction<AiResponse | undefined>>;
   handleRequest: (args: HandleRequestProps) => void;
 }
 

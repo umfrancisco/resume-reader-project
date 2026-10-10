@@ -132,3 +132,11 @@ export async function sendRequestToGeminiApi({ e, pages, jobDescription, setPage
     setIsWaiting(false);
   }
 }
+
+export function getFromLocalStorage(): AiResponse[] {
+  const response = localStorage.getItem("saved");
+  if (response !== null) {
+    return JSON.parse(response);
+  }
+  return [];
+}

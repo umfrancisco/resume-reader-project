@@ -1,4 +1,4 @@
-declare type ResponseGemini = {
+declare type AiResponse = {
   nome_usuario: string;
   profissao: string;
   sugestoes: string[];
@@ -13,5 +13,5 @@ declare type HandleRequestProps = {
   jobDescription: string;
   setPages: Dispatch<React.SetStateAction<string[]>>;
   setIsWaiting: Dispatch<React.SetStateAction<boolean>>;
-  setResponse: Dispatch<React.SetStateAction<ResponseGemini | undefined>>;
+  setResponse: Dispatch<React.SetStateAction<AiResponse | undefined>>;
 }

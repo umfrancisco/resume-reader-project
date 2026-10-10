@@ -1,12 +1,20 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import PdfReader from "./components/PdfReader";
 import Results from "./components/Results";
-import { sendRequestToGeminiApi } from "./services/api";
+import { getFromLocalStorage, sendRequestToGeminiApi } from "./services/api";
 
 function App() {
   const [pages, setPages] = useState<string[]>([]);
-  const [response, setResponse] = useState<ResponseGemini>();
+  const [response, setResponse] = useState<AiResponse>();
   const [isWaiting, setIsWaiting] = useState(false);
+  let saved: AiResponse[] = getFromLocalStorage();
+
+  useEffect(() => {
+    if (response) {
+      saved.push(response);
+      localStorage.setItem("saved", JSON.stringify(saved));
+    }
+  }, [response]);
 
   return (
     <div className="container">
