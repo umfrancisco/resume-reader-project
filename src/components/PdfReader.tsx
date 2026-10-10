@@ -1,13 +1,13 @@
-import { useState, type ChangeEvent } from "react";
+import { useState, type ChangeEvent, type Dispatch } from "react";
 import { extractPdfText } from "../services/api";
 import Page from "./Page";
 
 type Props = {
   pages: string[];
-  setPages: (arr: string[]) => void;
-  setIsWaiting: (val: boolean) => void;
-  setResponse: (val: ResponseGemini) => void;
-  handleRequest: HandleRequest;
+  setPages: Dispatch<React.SetStateAction<string[]>>;
+  setIsWaiting: Dispatch<React.SetStateAction<boolean>>;
+  setResponse: Dispatch<React.SetStateAction<ResponseGemini | undefined>>;
+  handleRequest: (args: HandleRequestProps) => void;
 }
 
 function PdfReader({ pages, setPages, setIsWaiting, setResponse, handleRequest }: Props) {
@@ -22,6 +22,7 @@ function PdfReader({ pages, setPages, setIsWaiting, setResponse, handleRequest }
 
     const extractedPages = await extractPdfText(file);
     setPages(extractedPages);
+    setResponse(undefined);
     handleDisplay();
   }
 
@@ -36,7 +37,7 @@ function PdfReader({ pages, setPages, setIsWaiting, setResponse, handleRequest }
         {pages.length > 0 && (
           <div className={pages.length > 10 ? "hide" : ""}>
             <button className="show-text-button" onClick={handleDisplay}>{displayPdfText ? "Hide PDF text" : "Show PDF text"}</button>
-            <button className="show-text-button" onClick={() => handleRequest(pages, setPages, setIsWaiting, setResponse)}>Submit</button>
+            <button className="show-text-button" onClick={() => handleRequest({ pages, setPages, setIsWaiting, setResponse })}>Submit</button>
           </div>
         )}
       </div>

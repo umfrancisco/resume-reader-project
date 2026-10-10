@@ -4,9 +4,9 @@ declare type ResponseGemini = {
   sugestoes: string[];
 }
 
-declare type HandleRequest = (
-  pages: string[],
-  setPages: (arr: string[]) => void,
-  setIsWaiting: (val: boolean) => void,
-  setResponse: (val: ResponseGemini) => void
-) => void;
+declare type HandleRequestProps = {
+  pages: string[];
+  setPages: Dispatch<React.SetStateAction<string[]>>;
+  setIsWaiting: Dispatch<React.SetStateAction<boolean>>;
+  setResponse: Dispatch<React.SetStateAction<ResponseGemini | undefined>>;
+}

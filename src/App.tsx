@@ -14,12 +14,7 @@ function App() {
         <div>Loading...</div>
       ) : (
         <>
-          <PdfReader 
-            pages={pages} 
-            setPages={setPages} 
-            setIsWaiting={setIsWaiting} 
-            setResponse={setResponse} 
-            handleRequest={sendRequestToGeminiApi} />
+          <PdfReader pages={pages} setPages={setPages} setIsWaiting={setIsWaiting} setResponse={setResponse} handleRequest={sendRequestToGeminiApi} />
           {response && <Results response={response} />}
         </>
       )}
