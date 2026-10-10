@@ -9,6 +9,8 @@ function Results({ response }: Props) {
     return (
       <div>
         <h4>{response.nome_usuario}, {response.profissao}</h4>
+        <p>Compatibility: {response.compatibilidade_vaga}/100</p>
+        <p>Suggestions:</p>
         <ul>
           {response.sugestoes.map((s, index) => (
             <p key={index}>{index + 1}. {s}</p>

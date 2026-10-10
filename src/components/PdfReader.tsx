@@ -12,6 +12,7 @@ type Props = {
 
 function PdfReader({ pages, setPages, setIsWaiting, setResponse, handleRequest }: Props) {
   const [displayPdfText, setDisplayPdfText] = useState(false);
+  const [jobDescription, setJobDescription] = useState("");
 
   async function handleFileChange(e: ChangeEvent<HTMLInputElement>) {
     const file = e.target.files?.[0];
@@ -35,10 +36,12 @@ function PdfReader({ pages, setPages, setIsWaiting, setResponse, handleRequest }
       <div className="control-bar">
         <input className="file-input" type="file" accept="application/pdf" onChange={handleFileChange} />
         {pages.length > 0 && (
-          <div className={pages.length > 10 ? "hide" : ""}>
+          <form className={pages.length > 10 ? "hide" : ""} onSubmit={(e) => handleRequest({ e, pages, jobDescription, setPages, setIsWaiting, setResponse })}>
+            <label>Job Description: </label>
+            <input type="text" value={jobDescription} onChange={e => setJobDescription(e.target.value)} />
             <button className="show-text-button" onClick={handleDisplay}>{displayPdfText ? "Hide PDF text" : "Show PDF text"}</button>
-            <button className="show-text-button" onClick={() => handleRequest({ pages, setPages, setIsWaiting, setResponse })}>Submit</button>
-          </div>
+            <button className="show-text-button" type="submit">Submit</button>
+          </form>
         )}
       </div>
       {displayPdfText && (
