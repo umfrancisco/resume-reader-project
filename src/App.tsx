@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import PdfReader from "./components/PdfReader";
 import Results from "./components/Results";
-import { getFromLocalStorage, sendRequestToGeminiApi } from "./services/api";
+import { getFromLocalStorage, PdfReaderContext } from "./services/api";
 
 function App() {
   const [pages, setPages] = useState<string[]>([]);
@@ -17,17 +17,25 @@ function App() {
   }, [response]);
 
   return (
-    <div className="container">
-      <main className="main-content">
-        {isWaiting && <div>Carregando...</div>}
-        {!isWaiting && (
-          <>
-            <PdfReader pages={pages} setPages={setPages} setIsWaiting={setIsWaiting} setResponse={setResponse} handleRequest={sendRequestToGeminiApi} />
-            {response && <Results response={response} />}
-          </>
-        )}
-      </main>
-    </div>
+    <PdfReaderContext.Provider value={{
+      pages,
+      setPages,
+      setIsWaiting,
+      response,
+      setResponse,
+    }}>
+      <div className="container">
+        <main className="main-content">
+          {isWaiting && <div>Carregando...</div>}
+          {!isWaiting && (
+            <>
+              <PdfReader />
+              {response && <Results />}
+            </>
+          )}
+        </main>
+      </div>
+    </PdfReaderContext.Provider>
   )
 }
 

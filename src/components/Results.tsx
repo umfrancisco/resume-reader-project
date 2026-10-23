@@ -1,9 +1,8 @@
+import { useContext } from "react";
+import { PdfReaderContext } from "../services/api";
 
-type Props = {
-  response: AiResponse;
-}
-
-function Results({ response }: Props) {
+function Results() {
+  const { response } = useContext(PdfReaderContext);
 
   if (response) {
     return (

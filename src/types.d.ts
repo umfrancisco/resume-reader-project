@@ -7,6 +7,14 @@ declare type AiResponse = {
   compatibilidade_vaga: number;
 }
 
+declare type PdfReaderContextAPI = {
+  pages: string[];
+  setPages: (val: string[]) => void;
+  setIsWaiting: (val: boolean) => void;
+  response: AiResponse | undefined;
+  setResponse: (val: AiResponse | undefined) => void;
+}
+
 declare type HandleRequestProps = {
   e: MouseEvent<HTMLButtonElement, MouseEvent>;
   pages: string[];
