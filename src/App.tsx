@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import PdfReader from "./components/PdfReader";
 import Results from "./components/Results";
 import { getFromLocalStorage, PdfReaderContext } from "./services/api";
+import History from "./components/History";
 
 function App() {
   const [pages, setPages] = useState<string[]>([]);
@@ -25,12 +26,13 @@ function App() {
       setResponse,
     }}>
       <div className="container">
+        <PdfReader />
         <main className="main-content">
           {isWaiting && <div>Carregando...</div>}
-          {!isWaiting && (
+          {(!isWaiting && response) && (
             <>
-              <PdfReader />
-              {response && <Results />}
+              <Results />
+              <History saved={saved} />
             </>
           )}
         </main>
